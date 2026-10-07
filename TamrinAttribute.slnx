@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="BL/BL.csproj" Id="88bfb2d0-c163-4c60-b245-6e4d3bc62943" />
+  <Project Path="common/common.csproj" Id="485c7841-a731-4895-a317-6b5bee47a829" />
+  <Project Path="DL/DL.csproj" Id="786b5d97-eacb-499d-8a83-4cf092c5051d" />
+  <Project Path="Model/Model.csproj" Id="16680eb9-e85f-47a0-a634-d0d1394ed848" />
+  <Project Path="TamrinAttribute/TamrinAttribute.csproj" Id="8a3a326b-797c-465c-bc78-4a09484d4456" />
+</Solution>
