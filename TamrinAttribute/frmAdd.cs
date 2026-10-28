@@ -33,33 +33,30 @@ namespace TamrinAttribute
                 LastName = txtlastname.Text,
                 PhoneNumber = txtphonenumber.Text,
             };
-            var validatinC = new ValidationContext(dr);
+            var controlMap= new Dictionary<string, Control>
+            {
+                {nameof(Doctor.FirstName),txtfirstname },
+                {nameof(Doctor.LastName),txtlastname  },
+                {nameof(Doctor.PhoneNumber),txtphonenumber }
+            };
             var result = new List<ValidationResult>();
-            bool isvalid = Validator.TryValidateObject(dr, validatinC, result, true);
-            if (!isvalid)
-            { 
-                foreach(ValidationResult item in  result)
+            if(!_drManager.ValidateDr(dr,result)) 
+            {
+                foreach (ValidationResult item in result)
                 {
                     foreach (string memberName in item.MemberNames)
                     {
-                        if(memberName=="FirstName")
+                        if (controlMap.TryGetValue(memberName,out Control control))
                         {
-                            errorProvider1.SetError(txtfirstname, item.ErrorMessage);
+                            errorProvider1.SetError(control,item.ErrorMessage);
                         }
-                        if(memberName=="LastName")
-                        {
-                            errorProvider1.SetError(txtlastname, item.ErrorMessage);
-                        }
-                        if(memberName=="PhoneNumber")
-                        {
-                            errorProvider1.SetError(txtphonenumber, item.ErrorMessage);
-                        }    
+                        return;
                     }
                 }
-                return;
             }
             _drManager.Insert(dr);
 
         }
     }
 }
+

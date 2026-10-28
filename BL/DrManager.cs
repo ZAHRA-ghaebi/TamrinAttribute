@@ -1,10 +1,11 @@
 ﻿using DL;
+using Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model;
 namespace BL
 {
     public class DrManager
@@ -12,7 +13,7 @@ namespace BL
         DrManagment _drmanagment;
         public DrManager()
         {
-            _drmanagment= new DrManagment();
+            _drmanagment = new DrManagment();
         }
         public void Insert(Doctor dr)
         {
@@ -22,5 +23,10 @@ namespace BL
         {
             return _drmanagment.Select();
         }
+        public bool ValidateDr(Doctor dr,List<ValidationResult> result)
+        {
+            var validatinC = new ValidationContext(dr);
+            return  Validator.TryValidateObject(dr, validatinC, result, true);
+        } 
     }
 }

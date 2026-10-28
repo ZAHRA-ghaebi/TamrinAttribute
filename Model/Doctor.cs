@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.SymbolStore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace Model
         [Required(ErrorMessage = "نام خانوادگی الزامی است")]
         [MinLength(3, ErrorMessage = "نام خانوادگی باید طولش بیشتر از 3 باشد")]
         public string LastName { get; set; }
-        [phoneNumberAttribute]
+        [phoneNumber]
         public string PhoneNumber { get; set; }
         public int Id { get; set; }
         //public string Error { get; private set; }
@@ -33,5 +34,9 @@ namespace Model
         //        return true;
         //    }
         //}
+       
+
+           
+
     }
 }

@@ -9,6 +9,7 @@ namespace common
 {
     public class phoneNumberAttribute:ValidationAttribute
     {
+
         public override bool IsValid(object value)
         {
             string phoneNumber = (string)value;
@@ -17,17 +18,17 @@ namespace common
                 ErrorMessage = "شماره تماس را وارد کن";
                 return false;
             }
-            if(!phoneNumber.All(char.IsDigit))
+            if (!phoneNumber.All(char.IsDigit))
             {
                 ErrorMessage = "شماره تماس باید عدد باشه";
-              return false;
+                return false;
             }
             if (!phoneNumber.StartsWith("09"))
             {
                 ErrorMessage = "شماره موبایل باید با09 شروع شود";
                 return false;
             }
-            if(phoneNumber.Length!=11)
+            if (phoneNumber.Length != 11)
             {
                 ErrorMessage = "شماره تماس باید11رقم باشد";
                 return false;
